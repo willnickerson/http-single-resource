@@ -25,7 +25,7 @@ the new data for that resource.
 * `DELETE` - The corresponding resource should be removed. `notes/name_of_resource`
 would remove resource `name_of_resource`
 
-Respond with appropriate status code (`400`, `404`, etc.)
+Respond with appropriate status code (`400`, `404`, etc.) and content type (`application/json`)
 
 For `POST` and `PUT` you'll need to ready the body!
 
