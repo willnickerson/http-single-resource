@@ -13,8 +13,8 @@ of the notes that have been saved thus far. A get request sent to
 `/notes/name_of_resource` should respond with that resource.
 
 * `POST` - The in-coming post request body should be saved 
-to in-memomory storage. For example if a request 
-is sent to `/notes` with a body of `{ noteBody: 'hello world' }` the in-memory array
+to storage. For example if a request 
+is sent to `/notes` with a body of `{ noteBody: 'hello world' }` the store
 would now contain an object from that data.
 
 * `PUT` - The data coming in should be saved to the named resource either
