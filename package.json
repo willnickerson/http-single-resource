@@ -1,0 +1,30 @@
+{
+  "name": "http-single-resource",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willnickerson/http-single-resource.git"
+  },
+  "author": "Will Nickerson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willnickerson/http-single-resource/issues"
+  },
+  "homepage": "https://github.com/willnickerson/http-single-resource#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.8.1",
+    "mocha": "^3.1.2"
+  },
+  "dependencies": {
+    "sander": "^0.5.1"
+  }
+}
