@@ -29,17 +29,57 @@ describe('http-server', () => {
       });
   });
 
-  // it('responds correctly to a "GET" request on a resource', done => {
-  //   request
-  //     .get('/notes/cat')
-  //     .end((err, res) => {
-  //       if(err) return done(err);
-  //       assert.equal(res.text, 'cat : get your cat');
-  //       done();
-  //     });
-  // });
+  it('responds correctly to a "GET" request on a resource', done => {
+    request
+      .get('/notes/cat')
+      .end((err, res) => {
+        if(err) return done(err);
+        assert.equal(res.text, 'cat : get your cat');
+        done();
+      });
+  });
 
-  // it('responds correctly to a "GET" request on all resources', done => {
-  //   done();
-  // });
+  request
+    .post('/notes')
+    .send({ title: 'mail', body: 'get your mail' })
+    .end(() => console.log('we added another resource'));
+
+  request
+    .post('/notes')
+    .send({ title: 'trash', body: 'get your trash' })
+    .end(() =>  console.log('we added another resource'));
+
+  it('responds correctly to a "GET" request on all resources', done => {
+    request
+      .get('/notes')
+      .end((err, res) => {
+        if(err) return done(err);
+        assert.include(res.text, 'cat');
+        assert.include(res.text, 'mail');
+        assert.include(res.text, 'trash');
+        done();
+      });
+  });
+
+  it('responds correcty to a PUT request', done => {
+    request
+      .put('/notes/cat')
+      .send({ title: 'test', body: 'it worked!' })
+      .end((err, res) => {
+        if(err) return done(err);
+        assert.equal(res.text, 'You have updated cat to - test : it worked!');
+        done();
+      });
+  });
+
+  it('responds correctly to a delete request', done => {
+    request
+      .delete('/notes/cat')
+      .end((err, res) => {
+        if(err) return done(err);
+        assert.isNotOk(fs.existsSync('./notes/cat.json'));
+        assert.equal(res.text, 'cat has been destroyed!');
+        done();
+      });
+  });
 });
